@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 23:46:15 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/11 22:21:22 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:32:29 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ bool	parse(int argc, char **argv, t_data *in_data)
 {
 	if (!check_args(argc, argv))
 		return (false);
-	// init_input(argc, argv, in_data);
+	init_input(argc, argv, in_data);
 	return (true);
 }
