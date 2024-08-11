@@ -35,7 +35,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo "$(RED) Deleting so_long!$(RESET)"
+	@echo "$(RED) Deleting Philo!$(RESET)"
 
 re: fclean all
 
