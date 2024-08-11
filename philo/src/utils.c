@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 00:15:51 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/11 22:05:36 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:56:36 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,29 @@ long	ft_atoi(char *str)
 	return (res * sign);
 }
 
-size_t	ft_strlen(const char *str)
+bool	argv_valid(char *str)
 {
-	size_t	i;
+	int	len;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	len = 0;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '-')
+	{
+		throw_error(NEG_TXT);
+		return (false);
+	}
+	if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		len++;
+		str++;
+	}
+	if (len > 10)
+	{
+		throw_error(MAX_TXT);
+		return (false);
+	}
+	return (true);
 }

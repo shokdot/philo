@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 23:46:15 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/11 22:32:29 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:57:05 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,8 @@ bool	check_args(int argc, char **argv)
 	}
 	while (argv[i])
 	{
-		if (ft_strlen(argv[i]) > 10)
-		{
-			throw_error(TOO_BIG);
+		if (!argv_valid(argv[i]))
 			return (false);
-		}
 		i++;
 	}
 	return (true);
@@ -46,10 +43,16 @@ void	init_input(int argc, char **argv, t_data *in_data)
 	in_data->sleep_time = ft_atoi(argv[4]);
 }
 
+// bool	validate_input(t_data *in_data)
+// {
+// }
+
 bool	parse(int argc, char **argv, t_data *in_data)
 {
 	if (!check_args(argc, argv))
 		return (false);
 	init_input(argc, argv, in_data);
+	// if (!validate_input(&in_data))
+	// 	return (false);
 	return (true);
 }
