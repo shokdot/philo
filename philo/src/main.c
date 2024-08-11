@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:02:18 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/11 17:31:00 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:14:06 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ int	main(int argc, char **argv)
 {
 	t_data	in_data;
 
-	if (parse(argc, argv, &in_data))
-	{
-		throw_error("Criedentals");
-		return (1);
-	}
+	if (!parse(argc, argv, &in_data))
+		return (-1);
 }

@@ -6,11 +6,33 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 23:46:15 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/11 18:49:25 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:21:22 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+bool	check_args(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	if (argc < 5 || argc > 6)
+	{
+		throw_error(USG_TXT);
+		return (false);
+	}
+	while (argv[i])
+	{
+		if (ft_strlen(argv[i]) > 10)
+		{
+			throw_error(TOO_BIG);
+			return (false);
+		}
+		i++;
+	}
+	return (true);
+}
 
 void	init_input(int argc, char **argv, t_data *in_data)
 {
@@ -24,10 +46,10 @@ void	init_input(int argc, char **argv, t_data *in_data)
 	in_data->sleep_time = ft_atoi(argv[4]);
 }
 
-int	parse(int argc, char **argv, t_data *in_data)
+bool	parse(int argc, char **argv, t_data *in_data)
 {
-	if (argc < 5 || argc > 6)
-		return (1);
-	init_input(argc, argv, in_data);
-	return (0);
+	if (!check_args(argc, argv))
+		return (false);
+	// init_input(argc, argv, in_data);
+	return (true);
 }

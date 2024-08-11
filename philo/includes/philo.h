@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/11 18:48:39 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:20:00 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 
 # define ERR_TXT "\033[0;31mError\n\033[0;33m%s\033[0m\n"
+# define USG_TXT "Invalid count of arguments"
+# define TOO_BIG "Argument length is too long"
 
 typedef struct s_data
 {
@@ -29,8 +31,9 @@ typedef struct s_data
 	int	meal_amount;
 }		t_data;
 
-int		parse(int argc, char **argv, t_data *in_data);
+bool	parse(int argc, char **argv, t_data *in_data);
 void	throw_error(char *txt);
-int		ft_atoi(char *str);
+long	ft_atoi(char *str);
+size_t	ft_strlen(const char *str);
 
 #endif
