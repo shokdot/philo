@@ -24,7 +24,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(NAME): $(OBJ_DIR) $(OBJ) Makefile $(HEADER)
-	@$(CC) -fsanitize=address $(CFLAGS) $(INCLUDES) $(OBJ) -o $(NAME) -pthread
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) -o $(NAME) -pthread
 	@echo "$(GREEN) Philo is ready!$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER) Makefile
