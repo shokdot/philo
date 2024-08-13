@@ -6,13 +6,14 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/11 22:52:12 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/13 11:51:45 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# include <limits.h>
 # include <pthread.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -23,20 +24,20 @@
 # define TOO_BIG "Argument length is too long"
 # define NEG_TXT "Argument can't be negative"
 # define MAX_TXT "Maximum value of argument is INT_MAX"
+# define WRONG_NUM "Philo num must be > 0 < 200, time > 60ms and < INT_MAX "
 
 typedef struct s_data
 {
-	int	philo_num;
-	int	die_time;
-	int	eat_time;
-	int	sleep_time;
-	int	meal_amount;
-}		t_data;
+	long	philo_num;
+	long	die_time;
+	long	eat_time;
+	long	sleep_time;
+	long	meal_amount;
+}			t_data;
 
-bool	parse(int argc, char **argv, t_data *in_data);
-void	throw_error(char *txt);
-long	ft_atoi(char *str);
-size_t	ft_strlen(const char *str);
-bool	argv_valid(char *str);
+bool		parse(int argc, char **argv, t_data *in_data);
+void		throw_error(char *txt);
+long		ft_atoi(char *str);
+bool		argv_valid(char *str);
 
 #endif
