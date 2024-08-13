@@ -10,11 +10,11 @@
 			"name": "Debug",
 			"program": "${workspaceFolder}/philo",
 			"args": [
-				"+55",
-				"26",
-				"27",
-				"278",
-				"2"
+				"199",
+				"2147483646",
+				"300",
+				"400",
+				"2147483646"
 			],
 			"cwd": "${workspaceFolder}"
 		}
