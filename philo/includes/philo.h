@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/17 17:04:01 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/17 17:41:30 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ typedef struct s_philo
 	pthread_mutex_t	right_fork;
 	pthread_t		thread_id;
 }					t_philo;
+
+typedef struct s_general
+{
+	t_philo			*philos;
+	pthread_mutex_t	*forks;
+}					t_general;
 
 bool				parse(int argc, char **argv, t_data *in_data);
 void				throw_error(char *txt);
