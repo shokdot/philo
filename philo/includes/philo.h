@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/17 18:11:31 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/17 18:49:06 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@
 # define MAX_TXT "Maximum value of argument is INT_MAX"
 # define WRONG_NUM "Philo num must be > 0 < 200, time > 60ms and < INT_MAX "
 
+typedef struct s_philo
+{
+	int				philo_id;
+	int				meal_count;
+	int				last_eat;
+	int				left_fork;
+	int				right_fork;
+	pthread_t		thread_id;
+}					t_philo;
+
 typedef struct s_data
 {
 	long			philo_num;
@@ -37,19 +47,10 @@ typedef struct s_data
 	pthread_mutex_t	*forks;
 }					t_data;
 
-typedef struct s_philo
-{
-	int				philo_id;
-	int				meal_count;
-	int				last_eat;
-	pthread_mutex_t	left_fork;
-	pthread_mutex_t	right_fork;
-	pthread_t		thread_id;
-}					t_philo;
-
 bool				parse(int argc, char **argv, t_data *in_data);
 void				throw_error(char *txt);
 long				ft_atoi(char *str);
 bool				argv_valid(char *str);
+bool				data_init(t_data *data);
 
 #endif
