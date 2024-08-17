@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/13 11:51:45 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/17 17:04:01 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,26 @@
 
 typedef struct s_data
 {
-	long	philo_num;
-	long	die_time;
-	long	eat_time;
-	long	sleep_time;
-	long	meal_amount;
-}			t_data;
+	long			philo_num;
+	long			die_time;
+	long			eat_time;
+	long			sleep_time;
+	long			meal_amount;
+}					t_data;
 
-bool		parse(int argc, char **argv, t_data *in_data);
-void		throw_error(char *txt);
-long		ft_atoi(char *str);
-bool		argv_valid(char *str);
+typedef struct s_philo
+{
+	int				philo_id;
+	int				meal_count;
+	int				last_eat;
+	pthread_mutex_t	left_fork;
+	pthread_mutex_t	right_fork;
+	pthread_t		thread_id;
+}					t_philo;
+
+bool				parse(int argc, char **argv, t_data *in_data);
+void				throw_error(char *txt);
+long				ft_atoi(char *str);
+bool				argv_valid(char *str);
 
 #endif
