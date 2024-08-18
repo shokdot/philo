@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/17 18:49:06 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:18:59 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define NEG_TXT "Argument can't be negative"
 # define MAX_TXT "Maximum value of argument is INT_MAX"
 # define WRONG_NUM "Philo num must be > 0 < 200, time > 60ms and < INT_MAX "
+# define SYSCALL_ERR "System call error occurred!"
 
 typedef struct s_philo
 {
