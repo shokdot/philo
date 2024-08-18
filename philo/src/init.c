@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 17:55:40 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/18 16:19:32 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:59:24 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ bool	init_forks(t_data *data)
 			return (false);
 		}
 		i++;
+	}
+	if (pthread_mutex_init(&data->log_mtx, NULL) != 0)
+	{
+		throw_error(SYSCALL_ERR);
+		return (false);
 	}
 	return (true);
 }

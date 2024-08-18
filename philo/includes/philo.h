@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/18 16:18:59 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:59:16 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_data
 	long			meal_amount;
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	log_mtx;
 }					t_data;
 
 bool				parse(int argc, char **argv, t_data *in_data);
