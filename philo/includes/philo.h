@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/18 16:59:16 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:38:21 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_philo
 	int				left_fork;
 	int				right_fork;
 	pthread_t		thread_id;
+	struct s_data	*data;
+
 }					t_philo;
 
 typedef struct s_data
