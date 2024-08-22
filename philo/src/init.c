@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 17:55:40 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/22 20:08:28 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:12:00 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,7 @@ bool	init_mutex(t_data *data)
 
 bool	data_init(t_data *data)
 {
-	if (!init_philos(data))
-		return (false);
-	else if (!init_mutex(data))
+	if (!init_philos(data) || !init_mutex(data))
 		return (false);
 	return (true);
 }
