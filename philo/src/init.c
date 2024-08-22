@@ -6,11 +6,29 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 17:55:40 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/22 18:44:49 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:08:28 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	init_clean(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	if (data->philos)
+		ft_free(data->philos);
+	if (data->forks)
+	{
+		while (i < data->philo_num)
+		{
+			pthread_mutex_destroy(&data->forks[i]);
+			i++;
+		}
+		ft_free(data->forks);
+	}
+}
 
 bool	init_philos(t_data *data)
 {
@@ -33,34 +51,30 @@ bool	init_philos(t_data *data)
 	return (true);
 }
 
-bool	init_forks(t_data *data)
+bool	init_mutex(t_data *data)
 {
 	int	i;
 
 	i = 0;
 	data->forks = malloc(data->philo_num * sizeof(pthread_mutex_t));
 	if (!data->forks)
-		return (false);
+		return (init_clean(data), false);
 	while (data->philo_num > i)
 	{
 		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
-		{
-			throw_error(SYSCALL_ERR);
-			return (false);
-		}
+			return (init_clean(data), false);
 		i++;
 	}
 	if (pthread_mutex_init(&data->log_mtx, NULL) != 0)
-	{
-		throw_error(SYSCALL_ERR);
-		return (false);
-	}
+		return (init_clean(data), false);
 	return (true);
 }
 
 bool	data_init(t_data *data)
 {
-	if (!init_philos(data) || !init_forks(data))
+	if (!init_philos(data))
+		return (false);
+	else if (!init_mutex(data))
 		return (false);
 	return (true);
 }

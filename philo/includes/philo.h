@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/22 18:38:21 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:52:48 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void				throw_error(char *txt);
 long				ft_atoi(char *str);
 bool				argv_valid(char *str);
 bool				data_init(t_data *data);
+void				ft_free(void **ptr);
 
 #endif
