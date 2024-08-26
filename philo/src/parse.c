@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 23:46:15 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/18 17:19:04 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/26 20:11:55 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ void	init_input(char **argv, t_data *in_data)
 
 bool	validate_input(t_data *in_data)
 {
-	if (in_data->philo_num > 200 || in_data->eat_time < 60000
-		|| in_data->die_time < 60000 || in_data->sleep_time < 60000)
+	if (in_data->philo_num > 200 || in_data->philo_num == 0
+		|| in_data->eat_time < 60000 || in_data->die_time < 60000
+		|| in_data->sleep_time < 60000)
 	{
 		throw_error(WRONG_NUM);
 		return (false);
