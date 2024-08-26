@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 17:55:40 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/22 20:12:00 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/26 18:03:38 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_clean(t_data *data)
 
 	i = 0;
 	if (data->philos)
-		ft_free(data->philos);
+		ft_free((void *)data->philos);
 	if (data->forks)
 	{
 		while (i < data->philo_num)
@@ -26,7 +26,7 @@ void	init_clean(t_data *data)
 			pthread_mutex_destroy(&data->forks[i]);
 			i++;
 		}
-		ft_free(data->forks);
+		ft_free((void *)data->forks);
 	}
 }
 
