@@ -6,12 +6,13 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 18:01:04 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/26 18:26:48 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/26 20:18:07 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	simulate(t_data *data)
+bool	simulate(t_data *data)
 {
+	return (true);
 }
