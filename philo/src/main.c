@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:02:18 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/26 18:10:26 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/27 20:47:39 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ int	main(int argc, char **argv)
 	else if (!data_init(&data))
 		return (-2);
 	else if (!simulate(&data))
-		return (-3);
+		return (init_clean(&data), -3);
+	init_clean(&data);
+	return (0);
 }

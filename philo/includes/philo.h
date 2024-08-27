@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/26 18:11:03 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/27 20:37:54 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/time.h>
 
 # define ERR_TXT "\033[0;31mError\n\033[0;33m%s\033[0m\n"
 # define USG_TXT "Invalid count of arguments"
@@ -57,5 +58,7 @@ long				ft_atoi(char *str);
 bool				argv_valid(char *str);
 bool				data_init(t_data *data);
 void				ft_free(void **ptr);
-int					simulate(t_data *data);
+bool				simulate(t_data *data);
+void				init_clean(t_data *data);
+
 #endif
