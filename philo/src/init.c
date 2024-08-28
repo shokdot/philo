@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 17:55:40 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/26 20:32:34 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:21:03 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ bool	init_philos(t_data *data)
 	int	i;
 
 	i = 0;
+	data->start_time = timestamp();
 	data->philos = malloc(data->philo_num * sizeof(t_philo));
 	if (!data->philos)
 		return (false);

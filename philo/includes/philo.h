@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/27 20:37:54 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:28:07 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
+# include <unistd.h>
 
 # define ERR_TXT "\033[0;31mError\n\033[0;33m%s\033[0m\n"
 # define USG_TXT "Invalid count of arguments"
@@ -47,6 +48,7 @@ typedef struct s_data
 	long			eat_time;
 	long			sleep_time;
 	long			meal_amount;
+	long long		start_time;
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	log_mtx;
@@ -60,5 +62,7 @@ bool				data_init(t_data *data);
 void				ft_free(void **ptr);
 bool				simulate(t_data *data);
 void				init_clean(t_data *data);
+long long			timestamp(void);
+void				ft_usleep(int ms);
 
 #endif

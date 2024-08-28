@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 00:15:51 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/22 19:52:29 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:00:52 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ bool	argv_valid(char *str)
 	}
 	return (true);
 }
+
 void	ft_free(void **ptr)
 {
 	if (ptr && *ptr)
