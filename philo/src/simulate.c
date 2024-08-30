@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 18:01:04 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/29 21:49:11 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:23:47 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ bool	one_philo(t_data *data)
 	printf("%lu 1 died\n", data->die_time / 1000);
 	if (pthread_mutex_unlock(&data->forks[0]))
 		return (printf(SYSCALL_ERR), false);
+	return (true);
+}
+
+bool	start_dinner(t_data *data)
+{
+	if (!thread_creation(data))
+		return (false);
+	else if (!stop_simulation(data))
+		return (false);
 	return (true);
 }
 

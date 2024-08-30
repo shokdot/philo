@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/29 20:53:21 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:24:16 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ void				init_clean(t_data *data);
 long long			timestamp(void);
 void				ft_usleep(int ms);
 bool				start_dinner(t_data *data);
+bool				thread_creation(t_data *data);
+bool				stop_simulation(t_data *data);
 
 #endif
