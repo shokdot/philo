@@ -6,15 +6,25 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:51:58 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/30 15:56:25 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/08/30 19:04:40 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+void	busy_waiting(void)
+{
+	printf("LOL\n");
+}
+
 void	*dinner(void *arg)
 {
-	printf("lol\n");
+	t_data	*data;
+
+	data = (t_data *)arg;
+	printf("ugrop\n");
+	set_bool(&data->err_mtx, &data->err, true);
+	busy_waiting();
 	return (NULL);
 }
 
@@ -36,5 +46,9 @@ bool	thread_creation(t_data *data)
 		}
 		i++;
 	}
+	data->start_time = timestamp();
+	if (!set_bool(&data->all_ready_mtx, &data->all_ready, true))
+		return (false);
+	stop_simulation(data);
 	return (true);
 }
