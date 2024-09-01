@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:51:58 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/30 19:04:40 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/01 13:30:52 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ bool	thread_creation(t_data *data)
 		i++;
 	}
 	data->start_time = timestamp();
-	if (!set_bool(&data->all_ready_mtx, &data->all_ready, true))
-		return (false);
+	set_bool(&data->all_ready_mtx, &data->all_ready, true);
 	stop_simulation(data);
 	return (true);
 }

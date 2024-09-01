@@ -6,31 +6,26 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 17:18:53 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/30 18:01:38 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/01 13:29:05 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-bool	set_bool(pthread_mutex_t *mutex, bool *dest, bool value)
+void	set_bool(pthread_mutex_t *mutex, bool *dest, bool value)
 {
-	if (pthread_mutex_lock(mutex))
-		return (false);
+	pthread_mutex_lock(mutex);
 	*dest = value;
-	if (pthread_mutex_unlock(mutex))
-		return (false);
-	return (true);
+	pthread_mutex_unlock(mutex);
 }
 
-int	get_bool(pthread_mutex_t *mutex, bool *value)
+bool	get_bool(pthread_mutex_t *mutex, bool *value)
 {
 	bool	ret;
 
-	if (pthread_mutex_lock(mutex))
-		return (-1);
+	pthread_mutex_lock(mutex);
 	ret = *value;
-	if (pthread_mutex_unlock(mutex))
-		return (-1);
+	pthread_mutex_unlock(mutex);
 	return (ret);
 }
 
@@ -38,20 +33,15 @@ long	get_long(pthread_mutex_t *mutex, long *value)
 {
 	long	ret;
 
-	if (pthread_mutex_lock(mutex))
-		return (-1);
+	pthread_mutex_lock(mutex);
 	ret = *value;
-	if (pthread_mutex_unlock(mutex))
-		return (-1);
+	pthread_mutex_unlock(mutex);
 	return (ret);
 }
 
-bool	set_long(pthread_mutex_t *mutex, long *dest, long value)
+void	set_long(pthread_mutex_t *mutex, long *dest, long value)
 {
-	if (pthread_mutex_lock(mutex))
-		return (false);
+	pthread_mutex_lock(mutex);
 	*dest = value;
-	if (pthread_mutex_unlock(mutex))
-		return (false);
-	return (true);
+	pthread_mutex_unlock(mutex);
 }
