@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 17:55:40 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/30 18:59:58 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/01 15:12:09 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ bool	init_philos(t_data *data)
 	int	i;
 
 	i = 0;
-	data->err = false;
 	data->philos = malloc(data->philo_num * sizeof(t_philo));
 	if (!data->philos)
 		return (false);
@@ -49,8 +48,7 @@ bool	init_mutex(t_data *data)
 		i++;
 	}
 	if (pthread_mutex_init(&data->log_mtx, NULL)
-		|| pthread_mutex_init(&data->all_ready_mtx, NULL)
-		|| pthread_mutex_init(&data->err_mtx, NULL))
+		|| pthread_mutex_init(&data->data_catch, NULL))
 		return (init_clean(data), false);
 	return (true);
 }

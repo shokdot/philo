@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/30 19:02:03 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/01 16:02:50 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ typedef struct s_data
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	log_mtx;
-	pthread_mutex_t	all_ready_mtx;
-	pthread_mutex_t	err_mtx;
+	pthread_mutex_t	data_catch;
+	pthread_t		monitor;
 	bool			all_ready;
-	bool			err;
+	bool			end_simulation;
 }					t_data;
 
 bool				parse(int argc, char **argv, t_data *in_data);
@@ -71,7 +71,9 @@ void				ft_usleep(int ms);
 bool				start_dinner(t_data *data);
 bool				thread_creation(t_data *data);
 bool				stop_simulation(t_data *data);
-bool				set_bool(pthread_mutex_t *mutex, bool *dest, bool value);
-int					get_bool(pthread_mutex_t *mutex, bool *value);
+void				set_bool(pthread_mutex_t *mutex, bool *dest, bool value,
+						t_data *data);
+bool				get_bool(pthread_mutex_t *mutex, bool *value, t_data *data);
+void				*monitor(void *arg);
 
 #endif

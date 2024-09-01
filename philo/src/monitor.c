@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 19:02:18 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/01 15:26:14 by healeksa         ###   ########.fr       */
+/*   Created: 2024/09/01 15:53:58 by healeksa          #+#    #+#             */
+/*   Updated: 2024/09/01 16:05:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+void	*monitor(void *arg)
 {
-	t_data	data;
-
-	if (!parse(argc, argv, &data))
-		return (1);
-	else if (!data_init(&data))
-		return (2);
-	else if (!simulate(&data))
-		return (init_clean(&data), 3);
-	init_clean(&data);
-	printf("%d\n", getpid());
-	return (0);
+	while (1)
+	{
+		printf("ENDIN\n");
+	}
+	return (NULL);
 }

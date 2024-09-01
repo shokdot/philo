@@ -6,42 +6,82 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 17:18:53 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/01 13:29:05 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/01 15:10:36 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	set_bool(pthread_mutex_t *mutex, bool *dest, bool value)
+void	set_bool(pthread_mutex_t *mutex, bool *dest, bool value, t_data *data)
 {
-	pthread_mutex_lock(mutex);
+	if (pthread_mutex_lock(mutex))
+	{
+		pthread_mutex_lock(&data->data_catch);
+		data->end_simulation = true;
+		pthread_mutex_unlock(&data->data_catch);
+	}
 	*dest = value;
-	pthread_mutex_unlock(mutex);
+	if (pthread_mutex_unlock(mutex))
+	{
+		pthread_mutex_lock(&data->data_catch);
+		data->end_simulation = true;
+		pthread_mutex_unlock(&data->data_catch);
+	}
 }
 
-bool	get_bool(pthread_mutex_t *mutex, bool *value)
+bool	get_bool(pthread_mutex_t *mutex, bool *value, t_data *data)
 {
 	bool	ret;
 
-	pthread_mutex_lock(mutex);
+	if (pthread_mutex_lock(mutex))
+	{
+		pthread_mutex_lock(&data->data_catch);
+		data->end_simulation = true;
+		pthread_mutex_unlock(&data->data_catch);
+	}
 	ret = *value;
-	pthread_mutex_unlock(mutex);
+	if (pthread_mutex_unlock(mutex))
+	{
+		pthread_mutex_lock(&data->data_catch);
+		data->end_simulation = true;
+		pthread_mutex_unlock(&data->data_catch);
+	}
 	return (ret);
 }
 
-long	get_long(pthread_mutex_t *mutex, long *value)
+long	get_long(pthread_mutex_t *mutex, long *value, t_data *data)
 {
 	long	ret;
 
-	pthread_mutex_lock(mutex);
+	if (pthread_mutex_lock(mutex))
+	{
+		pthread_mutex_lock(&data->data_catch);
+		data->end_simulation = true;
+		pthread_mutex_unlock(&data->data_catch);
+	}
 	ret = *value;
-	pthread_mutex_unlock(mutex);
+	if (pthread_mutex_unlock(mutex))
+	{
+		pthread_mutex_lock(&data->data_catch);
+		data->end_simulation = true;
+		pthread_mutex_unlock(&data->data_catch);
+	}
 	return (ret);
 }
 
-void	set_long(pthread_mutex_t *mutex, long *dest, long value)
+void	set_long(pthread_mutex_t *mutex, long *dest, long value, t_data *data)
 {
-	pthread_mutex_lock(mutex);
+	if (pthread_mutex_lock(mutex))
+	{
+		pthread_mutex_lock(&data->data_catch);
+		data->end_simulation = true;
+		pthread_mutex_unlock(&data->data_catch);
+	}
 	*dest = value;
-	pthread_mutex_unlock(mutex);
+	if (pthread_mutex_unlock(mutex))
+	{
+		pthread_mutex_lock(&data->data_catch);
+		data->end_simulation = true;
+		pthread_mutex_unlock(&data->data_catch);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 23:46:15 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/28 21:17:40 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/01 15:13:07 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,24 @@ bool	check_args(int argc, char **argv)
 	return (true);
 }
 
-void	init_input(char **argv, t_data *in_data)
+void	init_input(char **argv, t_data *data)
 {
 	if (argv[5])
-		in_data->meal_amount = ft_atoi(argv[5]);
+		data->meal_amount = ft_atoi(argv[5]);
 	else
-		in_data->meal_amount = -1;
-	in_data->philo_num = ft_atoi(argv[1]);
-	in_data->die_time = ft_atoi(argv[2]) * 1000;
-	in_data->eat_time = ft_atoi(argv[3]) * 1000;
-	in_data->sleep_time = ft_atoi(argv[4]) * 1000;
+		data->meal_amount = -1;
+	data->philo_num = ft_atoi(argv[1]);
+	data->die_time = ft_atoi(argv[2]) * 1000;
+	data->eat_time = ft_atoi(argv[3]) * 1000;
+	data->sleep_time = ft_atoi(argv[4]) * 1000;
+	data->end_simulation = false;
+	data->all_ready = false;
 }
 
-bool	validate_input(t_data *in_data)
+bool	validate_input(t_data *data)
 {
-	if (in_data->philo_num > 200 || in_data->philo_num == 0
-		|| in_data->eat_time < 60000 || in_data->die_time < 60000
-		|| in_data->sleep_time < 60000)
+	if (data->philo_num > 200 || data->philo_num == 0 || data->eat_time < 60000
+		|| data->die_time < 60000 || data->sleep_time < 60000)
 	{
 		throw_error(WRONG_NUM);
 		return (false);
@@ -55,12 +56,12 @@ bool	validate_input(t_data *in_data)
 	return (true);
 }
 
-bool	parse(int argc, char **argv, t_data *in_data)
+bool	parse(int argc, char **argv, t_data *data)
 {
 	if (!check_args(argc, argv))
 		return (false);
-	init_input(argv, in_data);
-	if (!validate_input(in_data))
+	init_input(argv, data);
+	if (!validate_input(data))
 		return (false);
 	return (true);
 }
