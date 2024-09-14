@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/01 16:02:50 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/14 15:30:12 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@
 typedef struct s_philo
 {
 	int				philo_id;
-	int				meal_count;
-	int				last_eat;
+	long			meal_count;
+	long			last_eat;
 	int				left_fork;
 	int				right_fork;
 	pthread_t		thread_id;
+	pthread_mutex_t	philo_data;
 	struct s_data	*data;
 
 }					t_philo;
@@ -61,13 +62,12 @@ typedef struct s_data
 bool				parse(int argc, char **argv, t_data *in_data);
 void				throw_error(char *txt);
 long				ft_atoi(char *str);
-bool				argv_valid(char *str);
 bool				data_init(t_data *data);
 void				ft_free(void **ptr);
 bool				simulate(t_data *data);
 void				init_clean(t_data *data);
 long long			timestamp(void);
-void				ft_usleep(int ms);
+void				ft_usleep(int ms, t_data *data);
 bool				start_dinner(t_data *data);
 bool				thread_creation(t_data *data);
 bool				stop_simulation(t_data *data);
@@ -75,5 +75,14 @@ void				set_bool(pthread_mutex_t *mutex, bool *dest, bool value,
 						t_data *data);
 bool				get_bool(pthread_mutex_t *mutex, bool *value, t_data *data);
 void				*monitor(void *arg);
+bool				simulation_ended(t_data *data);
+bool				eat(t_philo *philo);
+void				sleep_philo(t_philo *philo);
+bool				think(t_philo *philo);
+void				ft_printf(t_data *data, char *txt, int id);
+void				lock_forks(t_philo *philo);
+void				unlock_forks(t_philo *philo);
+void				set_long(pthread_mutex_t *mutex, long *dest, long value,
+						t_data *data);
 
 #endif

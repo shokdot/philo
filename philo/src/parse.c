@@ -6,11 +6,38 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 23:46:15 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/01 15:13:07 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/14 15:02:34 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+bool	argv_valid(char *str)
+{
+	int	len;
+
+	len = 0;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '-')
+	{
+		throw_error(NEG_TXT);
+		return (false);
+	}
+	if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		len++;
+		str++;
+	}
+	if (len > 10)
+	{
+		throw_error(MAX_TXT);
+		return (false);
+	}
+	return (true);
+}
 
 bool	check_args(int argc, char **argv)
 {
@@ -18,10 +45,7 @@ bool	check_args(int argc, char **argv)
 
 	i = 1;
 	if (argc < 5 || argc > 6)
-	{
-		throw_error(USG_TXT);
-		return (false);
-	}
+		return (throw_error(USG_TXT), false);
 	while (argv[i])
 	{
 		if (!argv_valid(argv[i]))

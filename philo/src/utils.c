@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 00:15:51 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/28 21:00:52 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/14 15:01:59 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +33,6 @@ long	ft_atoi(char *str)
 	return (res);
 }
 
-bool	argv_valid(char *str)
-{
-	int	len;
-
-	len = 0;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-		str++;
-	if (*str == '-')
-	{
-		throw_error(NEG_TXT);
-		return (false);
-	}
-	if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		len++;
-		str++;
-	}
-	if (len > 10)
-	{
-		throw_error(MAX_TXT);
-		return (false);
-	}
-	return (true);
-}
-
 void	ft_free(void **ptr)
 {
 	if (ptr && *ptr)
@@ -67,4 +40,9 @@ void	ft_free(void **ptr)
 		free(*ptr);
 		*ptr = NULL;
 	}
+}
+
+bool	simulation_ended(t_data *data)
+{
+	return (get_bool(&data->data_catch, &data->end_simulation, data));
 }

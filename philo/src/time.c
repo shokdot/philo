@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 21:15:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/08/28 21:24:54 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:41:59 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ long long	timestamp(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-void	ft_usleep(int ms)
+void	ft_usleep(int ms, t_data *data)
 {
 	long int	time;
 
 	time = timestamp();
-	while (timestamp() - time < ms)
+	while ((timestamp() - time < ms) && !simulation_ended(data))
 		usleep(100);
 }

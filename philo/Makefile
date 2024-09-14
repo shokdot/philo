@@ -12,7 +12,7 @@ SRCDIRS = $(addprefix $(SRC_DIR)/, $(SUBDIRS))
 SRCS = $(notdir $(wildcard $(SRC_DIR)/*.c))
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-CFLAGS = -g3 -fsanitize=address # -Wall -Wextra -Werror
+CFLAGS = -g3 -fsanitize=thread -Wall -Wextra -Werror
 
 GREEN = \x1b[32;1m
 RED = \x1b[31;1m

@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 17:55:40 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/01 15:12:09 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/14 15:07:10 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	init_philos(t_data *data)
 	{
 		data->philos[i].philo_id = i;
 		data->philos[i].meal_count = 0;
-		data->philos[i].last_eat = 0;
+		data->philos[i].last_eat = timestamp();
 		data->philos[i].left_fork = i;
 		data->philos[i].right_fork = (i + 1) % data->philo_num;
 		data->philos[i].data = data;
@@ -44,6 +44,8 @@ bool	init_mutex(t_data *data)
 	while (data->philo_num > i)
 	{
 		if (pthread_mutex_init(&data->forks[i], NULL))
+			return (init_clean(data), false);
+		if (pthread_mutex_init(&data->philos[i].philo_data, NULL))
 			return (init_clean(data), false);
 		i++;
 	}

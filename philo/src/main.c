@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:02:18 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/01 15:26:14 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/14 15:10:29 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	main(int argc, char **argv)
 	else if (!simulate(&data))
 		return (init_clean(&data), 3);
 	init_clean(&data);
-	printf("%d\n", getpid());
+	// printf("%d\n", getpid());
 	return (0);
 }
