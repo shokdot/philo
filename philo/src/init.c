@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 17:55:40 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/14 15:07:10 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:48:43 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@ bool	init_philos(t_data *data)
 		return (false);
 	while (data->philo_num > i)
 	{
-		data->philos[i].philo_id = i;
+		data->philos[i].philo_id = i + 1;
 		data->philos[i].meal_count = 0;
 		data->philos[i].last_eat = timestamp();
 		data->philos[i].left_fork = i;
 		data->philos[i].right_fork = (i + 1) % data->philo_num;
 		data->philos[i].data = data;
+		data->philos[i].is_full = false;
 		i++;
 	}
 	return (true);

@@ -6,13 +6,13 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 21:15:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/11 12:41:59 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:50:12 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long long	timestamp(void)
+long	timestamp(void)
 {
 	struct timeval	tv;
 
@@ -26,5 +26,5 @@ void	ft_usleep(int ms, t_data *data)
 
 	time = timestamp();
 	while ((timestamp() - time < ms) && !simulation_ended(data))
-		usleep(100);
+		usleep(500);
 }

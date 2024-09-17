@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/14 15:30:12 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/17 13:24:39 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_philo
 	long			last_eat;
 	int				left_fork;
 	int				right_fork;
+	bool			is_full;
 	pthread_t		thread_id;
 	pthread_mutex_t	philo_data;
 	struct s_data	*data;
@@ -49,7 +50,7 @@ typedef struct s_data
 	long			eat_time;
 	long			sleep_time;
 	long			meal_amount;
-	long long		start_time;
+	long			start_time;
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	log_mtx;
@@ -66,7 +67,7 @@ bool				data_init(t_data *data);
 void				ft_free(void **ptr);
 bool				simulate(t_data *data);
 void				init_clean(t_data *data);
-long long			timestamp(void);
+long				timestamp(void);
 void				ft_usleep(int ms, t_data *data);
 bool				start_dinner(t_data *data);
 bool				thread_creation(t_data *data);
@@ -76,13 +77,14 @@ void				set_bool(pthread_mutex_t *mutex, bool *dest, bool value,
 bool				get_bool(pthread_mutex_t *mutex, bool *value, t_data *data);
 void				*monitor(void *arg);
 bool				simulation_ended(t_data *data);
-bool				eat(t_philo *philo);
+void				eat(t_philo *philo);
 void				sleep_philo(t_philo *philo);
-bool				think(t_philo *philo);
+void				think(t_philo *philo);
 void				ft_printf(t_data *data, char *txt, int id);
 void				lock_forks(t_philo *philo);
 void				unlock_forks(t_philo *philo);
 void				set_long(pthread_mutex_t *mutex, long *dest, long value,
 						t_data *data);
+long				get_long(pthread_mutex_t *mutex, long *value, t_data *data);
 
 #endif

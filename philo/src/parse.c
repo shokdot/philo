@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 23:46:15 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/14 15:02:34 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:49:51 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	init_input(char **argv, t_data *data)
 	data->sleep_time = ft_atoi(argv[4]) * 1000;
 	data->end_simulation = false;
 	data->all_ready = false;
+	data->start_time = 5000;
 }
 
 bool	validate_input(t_data *data)
