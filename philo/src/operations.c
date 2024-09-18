@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:51:34 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/17 18:13:31 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:33:00 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ bool	meal_cont_check(t_philo *philo)
 
 void	eat(t_philo *philo)
 {
-	if (!meal_cont_check(philo))
-		return ;
+	meal_cont_check(philo);
 	lock_forks(philo);
 	ft_printf(philo->data, "is eating", philo->philo_id);
 	pthread_mutex_lock(&philo->philo_data);
