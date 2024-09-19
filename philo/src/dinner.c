@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:51:58 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/17 19:23:04 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:53:56 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	busy_waiting(t_data *data)
 	while (!get_bool(&data->data_catch, &data->all_ready, data)
 		&& !simulation_ended(data))
 		;
-	// ft_usleep(100, data);
 }
 
 void	*dinner(void *arg)
@@ -32,7 +31,8 @@ void	*dinner(void *arg)
 		ft_usleep(100, data);
 	while (!simulation_ended(data))
 	{
-		eat(philo);
+		if (!get_bool(&philo->philo_data, &philo->is_full, philo->data))
+			eat(philo);
 		sleep_philo(philo);
 		think(philo);
 	}

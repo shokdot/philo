@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:02:18 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/17 18:12:42 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:39:49 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_data data;
 
 	if (!parse(argc, argv, &data))
 		return (1);
@@ -30,14 +30,3 @@ int	main(int argc, char **argv)
 	// }
 	return (0);
 }
-
-// int	main(int argc, char **argv)
-// {
-// 	main2(argc, argv);
-// 	printf("%d\n", getppid());
-// 	// while (1)
-// 	// {
-// 	// 	/* code */
-// 	// }
-// 	// system("leaks philo");
-// }

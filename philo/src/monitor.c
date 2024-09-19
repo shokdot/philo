@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 15:53:58 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/18 15:31:40 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:57:38 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,30 +33,6 @@ bool	dead_check(t_data *data)
 	return (false);
 }
 
-bool	full_check(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->philo_num)
-	{
-		pthread_mutex_lock(&data->philos[i].philo_data);
-		if (data->philos[i].is_full == false)
-		{
-			pthread_mutex_unlock(&data->philos[i].philo_data);
-			break ;
-		}
-		pthread_mutex_unlock(&data->philos[i].philo_data);
-		i++;
-	}
-	if (i == data->philo_num)
-	{
-		set_bool(&data->data_catch, &data->end_simulation, true, data);
-		return (true);
-	}
-	return (false);
-}
-
 void	*monitor(void *arg)
 {
 	t_data	*data;
@@ -64,9 +40,8 @@ void	*monitor(void *arg)
 	data = (t_data *)arg;
 	while (!simulation_ended(data))
 	{
+		ft_usleep(200, data);
 		if (dead_check(data))
-			break ;
-		if (full_check(data))
 			break ;
 	}
 	return (NULL);

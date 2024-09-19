@@ -6,11 +6,36 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:51:34 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/18 15:33:00 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:42:23 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	full_check(t_data *data)
+{
+	int	i;
+
+	if (get_long(&data->data_catch, &data->meal_amount, data) == -1)
+		return ;
+	i = 0;
+	while (i < data->philo_num)
+	{
+		pthread_mutex_lock(&data->philos[i].philo_data);
+		if (data->philos[i].is_full == false)
+		{
+			pthread_mutex_unlock(&data->philos[i].philo_data);
+			break ;
+		}
+		pthread_mutex_unlock(&data->philos[i].philo_data);
+		i++;
+	}
+	if (i == data->philo_num)
+	{
+		set_bool(&data->data_catch, &data->end_simulation, true, data);
+		return ;
+	}
+}
 
 bool	meal_cont_check(t_philo *philo)
 {
@@ -31,14 +56,15 @@ bool	meal_cont_check(t_philo *philo)
 
 void	eat(t_philo *philo)
 {
-	meal_cont_check(philo);
 	lock_forks(philo);
 	ft_printf(philo->data, "is eating", philo->philo_id);
+	set_long(&philo->philo_data, &philo->last_eat, timestamp(), philo->data);
+	ft_usleep(philo->data->eat_time / 1000, philo->data);
 	pthread_mutex_lock(&philo->philo_data);
 	philo->meal_count++;
 	pthread_mutex_unlock(&philo->philo_data);
-	set_long(&philo->philo_data, &philo->last_eat, timestamp(), philo->data);
-	ft_usleep(philo->data->eat_time / 1000, philo->data);
+	meal_cont_check(philo);
+	full_check(philo->data);
 	unlock_forks(philo);
 }
 
