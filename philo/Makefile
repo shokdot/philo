@@ -2,8 +2,7 @@ NAME = philo
 
 SRC_DIR = src
 OBJ_DIR = build
-SUBDIRS = utils
-
+SUBDIRS =
 
 INCLUDES = -I includes
 HEADER = $(wildcard includes/*.h)
@@ -12,7 +11,7 @@ SRCDIRS = $(addprefix $(SRC_DIR)/, $(SUBDIRS))
 SRCS = $(notdir $(wildcard $(SRC_DIR)/*.c))
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-CFLAGS =  -g3  -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 GREEN = \x1b[32;1m
 RED = \x1b[31;1m
 RESET = \x1b[0m
@@ -38,4 +37,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all $(NAME) clean re fclean
+.PHONY: all clean re fclean

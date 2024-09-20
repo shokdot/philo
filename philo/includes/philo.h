@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/20 12:11:29 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:36:26 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ void				unlock_forks(t_philo *philo);
 // setters getters
 void				set_bool(pthread_mutex_t *mutex, bool *dest, bool value,
 						t_data *data);
-bool				get_bool(pthread_mutex_t *mutex, bool *value, t_data *data);
 void				set_long(pthread_mutex_t *mutex, long *dest, long value,
 						t_data *data);
+bool				get_bool(pthread_mutex_t *mutex, bool *value, t_data *data);
 long				get_long(pthread_mutex_t *mutex, long *value, t_data *data);
 
 #endif
