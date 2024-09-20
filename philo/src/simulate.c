@@ -6,21 +6,34 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 18:01:04 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/16 16:17:04 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/20 11:27:02 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-bool	one_philo(t_data *data)
+void	*one(void *arg)
 {
-	if (pthread_mutex_lock(&data->forks[0]))
-		return (printf(SYSCALL_ERR), false);
+	t_philo	*philo;
+	t_data	*data;
+
+	philo = (t_philo *)arg;
+	data = philo->data;
+	pthread_mutex_lock(&data->forks[0]);
 	printf("0 1 has taken a fork\n");
 	ft_usleep(data->die_time / 1000, data);
 	printf("%lu 1 died\n", data->die_time / 1000);
-	if (pthread_mutex_unlock(&data->forks[0]))
-		return (printf(SYSCALL_ERR), false);
+	pthread_mutex_unlock(&data->forks[0]);
+	return (NULL);
+}
+
+bool	one_philo(t_data *data)
+{
+	if (pthread_create(&data->philos[0].thread_id, NULL, one, &data->philos[0]))
+		return (false);
+	if (pthread_join(data->philos[0].thread_id, NULL))
+		return (false);
+	init_clean(data);
 	return (true);
 }
 

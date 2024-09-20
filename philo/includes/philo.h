@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 19:04:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/17 13:24:39 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/20 12:11:29 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,44 @@ typedef struct s_data
 	bool			end_simulation;
 }					t_data;
 
+// parsing init
 bool				parse(int argc, char **argv, t_data *in_data);
+bool				data_init(t_data *data);
+
+// utils
 void				throw_error(char *txt);
 long				ft_atoi(char *str);
-bool				data_init(t_data *data);
 void				ft_free(void **ptr);
+bool				simulation_ended(t_data *data);
+void				ft_printf(t_data *data, char *txt, int id);
+
+// simulation
 bool				simulate(t_data *data);
-void				init_clean(t_data *data);
-long				timestamp(void);
-void				ft_usleep(int ms, t_data *data);
 bool				start_dinner(t_data *data);
 bool				thread_creation(t_data *data);
-bool				stop_simulation(t_data *data);
-void				set_bool(pthread_mutex_t *mutex, bool *dest, bool value,
-						t_data *data);
-bool				get_bool(pthread_mutex_t *mutex, bool *value, t_data *data);
 void				*monitor(void *arg);
-bool				simulation_ended(t_data *data);
+
+// stop end
+bool				stop_simulation(t_data *data);
+void				init_clean(t_data *data);
+
+// time
+long				timestamp(void);
+void				ft_usleep(int ms, t_data *data);
+
+// operations
 void				eat(t_philo *philo);
 void				sleep_philo(t_philo *philo);
 void				think(t_philo *philo);
-void				ft_printf(t_data *data, char *txt, int id);
+
+// forks
 void				lock_forks(t_philo *philo);
 void				unlock_forks(t_philo *philo);
+
+// setters getters
+void				set_bool(pthread_mutex_t *mutex, bool *dest, bool value,
+						t_data *data);
+bool				get_bool(pthread_mutex_t *mutex, bool *value, t_data *data);
 void				set_long(pthread_mutex_t *mutex, long *dest, long value,
 						t_data *data);
 long				get_long(pthread_mutex_t *mutex, long *value, t_data *data);

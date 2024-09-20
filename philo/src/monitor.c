@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 15:53:58 by healeksa          #+#    #+#             */
-/*   Updated: 2024/09/19 16:57:38 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/09/19 19:24:33 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	*monitor(void *arg)
 	data = (t_data *)arg;
 	while (!simulation_ended(data))
 	{
-		ft_usleep(200, data);
+		ft_usleep(100, data);
 		if (dead_check(data))
 			break ;
 	}
